@@ -1,0 +1,16 @@
+chefserver:
+  image: imtiaz/chef-server
+  privileged: true
+  ports: 
+    - "4443:4443"
+  hostname: chef-server
+
+chefstation:
+  build: .
+  links:
+    - chefserver:chef-server
+  hostname: chefstation
+  volumes:
+    - /var/run/docker.sock:/var/run/docker.sock
+    - /usr/bin/docker:/usr/bin/docker
+
