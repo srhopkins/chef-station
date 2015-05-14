@@ -30,3 +30,5 @@ WORKDIR /root/chef-repo
 RUN echo -e 'echo Getting keys ...\ncurl -k https://chef-server:4443/knife_admin_key.tar.gz | tar xz -C /root/chef-repo/.chef/' >> ~/.bashrc
 
 RUN echo -e 'echo Running: knife ssl fetch\nknife ssl fetch && knife ssl check' >> ~/.bashrc
+
+RUN echo -e 'echo Initial kitchen config\nkitchen init --driver=docker' >> ~/.bashrc
